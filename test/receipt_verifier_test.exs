@@ -93,7 +93,7 @@ defmodule ReceiptVerifierTest do
 
         {:error, %ReceiptVerifier.Error{code: code, message: msg}} = ReceiptVerifier.verify(base64_receipt)
 
-        assert 21002 == code
+        assert 21_002 == code
         assert "The data in the receipt-data property was malformed or missing." == msg
       end
     end
@@ -106,7 +106,7 @@ defmodule ReceiptVerifierTest do
 
         {:error, %ReceiptVerifier.Error{} = err} = ReceiptVerifier.verify(base64_receipt, env: :sandbox)
 
-        assert 21008 == err.code
+        assert 21_008 == err.code
       end
     end
 
@@ -116,7 +116,7 @@ defmodule ReceiptVerifierTest do
 
         {:error, %ReceiptVerifier.Error{} = err} = ReceiptVerifier.verify(base64_receipt, env: :production)
 
-        assert 21007 == err.code
+        assert 21_007 == err.code
       end
     end
 
