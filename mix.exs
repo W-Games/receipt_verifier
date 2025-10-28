@@ -8,7 +8,7 @@ defmodule ReceiptVerifier.Mixfile do
     [
       app: :receipt_verifier,
       version: @version,
-      elixir: "~> 1.3",
+      elixir: "~> 1.18",
       build_embedded: Mix.env() == :prod,
       start_permanent: Mix.env() == :prod,
       description: description(),
@@ -35,12 +35,12 @@ defmodule ReceiptVerifier.Mixfile do
 
   defp deps do
     [
-      {:poison, "~> 2.0"},
-      {:dialyxir, "~> 0.5", only: :dev},
-      {:exvcr, "~> 0.8", only: :test},
-      {:credo, "~> 0.7", only: [:dev, :test]},
-      {:inch_ex, "~> 0.5", only: :docs},
-      {:ex_doc, "~> 0.15", only: [:dev, :docs]}
+      {:poison, "~> 6.0"},
+      {:dialyxir, "~> 1.4", only: [:dev, :test], runtime: false},
+      {:exvcr, "~> 0.17.1", only: :test},
+      {:credo, "~> 1.7.13", only: [:dev, :test]},
+      {:inch_ex, "~> 2.0.0", only: :docs},
+      {:ex_doc, "~> 0.39.1", only: [:dev, :docs]}
     ]
   end
 

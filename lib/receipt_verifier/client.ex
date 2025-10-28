@@ -4,8 +4,8 @@ defmodule ReceiptVerifier.Client do
   alias ReceiptVerifier.Error
 
   @endpoints [
-    production: 'https://buy.itunes.apple.com/verifyReceipt',
-    sandbox: 'https://sandbox.itunes.apple.com/verifyReceipt'
+    production: ~c"https://buy.itunes.apple.com/verifyReceipt",
+    sandbox: ~c"https://sandbox.itunes.apple.com/verifyReceipt"
   ]
 
   @doc """
@@ -38,10 +38,10 @@ defmodule ReceiptVerifier.Client do
     url = get_endpoint_url(opts.env)
 
     request_body = prepare_request_body(receipt, opts)
-    content_type = 'application/json'
+    content_type = ~c"application/json"
 
     request_headers = [
-      {'Accept', 'application/json'}
+      {~c"Accept", ~c"application/json"}
     ]
 
     :httpc.request(:post, {url, request_headers, content_type, request_body}, [], [])

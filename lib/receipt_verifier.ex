@@ -100,15 +100,16 @@ defmodule ReceiptVerifier do
   end
 
   defp maybe_retry(receipt, error, opts) do
-    with :auto <- opts.env do
-      case error do
-        %Error{code: 21_007} ->
-          retry_in_env(receipt, :sandbox, opts)
+    case opts.env do
+      :auto ->
+        case error do
+          %Error{code: 21_007} ->
+            retry_in_env(receipt, :sandbox, opts)
 
-        %Error{code: 21_008} ->
-          retry_in_env(receipt, :production, opts)
-      end
-    else
+          %Error{code: 21_008} ->
+            retry_in_env(receipt, :production, opts)
+        end
+
       env when env in [:sandbox, :production] ->
         {:error, error}
     end

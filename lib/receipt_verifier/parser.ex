@@ -41,11 +41,10 @@ defmodule ReceiptVerifier.Parser do
 
   def parse_response(%{"status" => 0, "receipt" => receipt} = data) do
     {:ok,
-      %ResponseData{
-        app_receipt: AppReceipt.parse(receipt),
-        raw: data
-      }
-    }
+     %ResponseData{
+       app_receipt: AppReceipt.parse(receipt),
+       raw: data
+     }}
   end
 
   def parse_response(%{"status" => 21_000}) do
